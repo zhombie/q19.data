@@ -125,8 +125,9 @@ fun FormResponse.toDomain(): Form {
     return Form(
         id = id,
         title = title ?: "",
+        prompt = null,
         isFlexible = isFlexibleForm(),
         fields = fields,
-        configs = configs?.toDomain() ?: Form.Configs()
+        configs = configs?.toDomain()
     )
 }
