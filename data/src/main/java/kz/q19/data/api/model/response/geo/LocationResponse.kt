@@ -1,4 +1,4 @@
-package kz.q19.data.api.geo
+package kz.q19.data.api.model.response.geo
 
 import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName

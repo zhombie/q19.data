@@ -1,6 +1,7 @@
-package kz.q19.data.api.configs
+package kz.q19.data.api.model.response.configs
 
-import kz.q19.data.api.i18n.toDomain
+import kz.q19.data.api.model.response.i18n.toDomain
+import kz.q19.domain.model.call.CallType
 import kz.q19.domain.model.configs.Configs
 
 
@@ -38,8 +39,8 @@ fun ConfigsResponse.toDomain(): Configs {
             val parentId = it.parentId ?: ConfigsResponse.CallScopeResponse.NO_PARENT_ID
 
             val type = when (it.type) {
-                ConfigsResponse.CallScopeResponse.TypeResponse.FOLDER -> Configs.Type.FOLDER
-                ConfigsResponse.CallScopeResponse.TypeResponse.LINK -> Configs.Type.LINK
+                ConfigsResponse.CallScopeResponse.TypeResponse.FOLDER -> Configs.Nestable.Type.FOLDER
+                ConfigsResponse.CallScopeResponse.TypeResponse.LINK -> Configs.Nestable.Type.LINK
                 else -> null
             }
 
@@ -52,9 +53,9 @@ fun ConfigsResponse.toDomain(): Configs {
                 ConfigsResponse.CallScopeResponse.ChatTypeResponse.VIDEO -> {
                     val callType = when (it.action) {
                         ConfigsResponse.CallScopeResponse.ActionResponse.AUDIO_CALL ->
-                            Configs.Call.CallType.AUDIO
+                            CallType.AUDIO
                         ConfigsResponse.CallScopeResponse.ActionResponse.VIDEO_CALL ->
-                            Configs.Call.CallType.VIDEO
+                            CallType.VIDEO
                         else -> null
                     }
                     calls.add(

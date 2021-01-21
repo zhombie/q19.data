@@ -1,4 +1,4 @@
-package kz.q19.data.api.i18n
+package kz.q19.data.api.model.response.i18n
 
 import kz.q19.domain.model.i18n.I18NString
 

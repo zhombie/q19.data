@@ -1,4 +1,4 @@
-package kz.q19.data.api.webrtc
+package kz.q19.data.api.model.response.webrtc
 
 import kz.q19.domain.model.webrtc.IceServer
 

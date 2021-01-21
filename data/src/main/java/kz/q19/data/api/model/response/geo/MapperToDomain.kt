@@ -1,4 +1,4 @@
-package kz.q19.data.api.geo
+package kz.q19.data.api.model.response.geo
 
 import kz.q19.domain.model.geo.Location
 

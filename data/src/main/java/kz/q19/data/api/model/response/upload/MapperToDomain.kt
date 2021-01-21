@@ -1,4 +1,4 @@
-package kz.q19.data.api.upload
+package kz.q19.data.api.model.response.upload
 
 import kz.q19.domain.model.upload.Upload
 

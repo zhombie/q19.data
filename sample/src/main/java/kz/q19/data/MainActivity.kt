@@ -2,12 +2,12 @@ package kz.q19.data
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import kz.q19.data.api.configs.ConfigsResponse
-import kz.q19.data.api.configs.toDomain
-import kz.q19.data.api.form.FormResponse
-import kz.q19.data.api.form.toDomain
-import kz.q19.data.api.geo.LocationResponse
-import kz.q19.data.api.geo.toDomain
+import kz.q19.data.api.model.response.configs.ConfigsResponse
+import kz.q19.data.api.model.response.configs.toDomain
+import kz.q19.data.api.model.response.form.FormResponse
+import kz.q19.data.api.model.response.form.toDomain
+import kz.q19.data.api.model.response.geo.LocationResponse
+import kz.q19.data.api.model.response.geo.toDomain
 
 class MainActivity : AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package kz.q19.data.api.form
+package kz.q19.data.api.model.response.form
 
 import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName

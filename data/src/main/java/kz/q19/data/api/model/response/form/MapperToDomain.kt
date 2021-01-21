@@ -1,9 +1,9 @@
-package kz.q19.data.api.form
+package kz.q19.data.api.model.response.form
 
 import kz.q19.domain.model.form.Form
 import kz.q19.domain.model.keyboard.Keyboard
-import kz.q19.domain.model.keyboard.button.Button
 import kz.q19.domain.model.keyboard.button.CallbackButton
+import kz.q19.domain.model.keyboard.button.TextButton
 
 fun FormResponse.FieldResponse.Info.toDomain(): Form.Field.Info {
     return Form.Field.Info(
@@ -52,7 +52,7 @@ fun FormResponse.FieldResponse.Keyboard.toDomain(): Keyboard {
                 if (!button.payload.isNullOrBlank()) {
                     CallbackButton(button.text, button.payload)
                 } else {
-                    Button(button.text)
+                    TextButton(button.text)
                 }
             }
         }

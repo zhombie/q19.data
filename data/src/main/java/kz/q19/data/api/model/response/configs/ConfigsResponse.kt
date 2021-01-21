@@ -1,8 +1,8 @@
-package kz.q19.data.api.configs
+package kz.q19.data.api.model.response.configs
 
 import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
-import kz.q19.data.api.i18n.I18NStringResponse
+import kz.q19.data.api.model.response.i18n.I18NStringResponse
 
 @Keep
 data class ConfigsResponse constructor(

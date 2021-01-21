@@ -1,4 +1,4 @@
-package kz.q19.data.api.webrtc
+package kz.q19.data.api.model.response.webrtc
 
 import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
