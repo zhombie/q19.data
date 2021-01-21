@@ -102,21 +102,28 @@ fun FormResponse.toDomain(): Form {
 
     if (!this.fields.isNullOrEmpty()) {
         for (it in this.fields) {
+            // If the type is not supported, then skip it
+            val type: Form.Field.Type = if (it.type == null) {
+                continue
+            } else {
+                it.type.toDomain()
+            }
+
             fields.add(
                 Form.Field(
                     id = it.id,
                     isFlexible = it.isFlex == true,
                     title = it.title ?: "",
                     prompt = it.prompt,
-                    type = it.type?.toDomain() ?: continue,  // If the type is not supported, then skip it
+                    type = type,
                     defaultValue = it.default,
-                    info = it.info?.toDomain(),
-                    configs = it.configs?.toDomain(),
+                    info = if (it.info != null) it.info.toDomain() else null,
+                    configs = if (it.configs != null) it.configs.toDomain() else null,
                     level = it.level,
-                    keyboard = it.keyboard?.toDomain(),
+                    keyboard = if (it.keyboard != null) it.keyboard.toDomain() else null,
                     isRequired = it.isRequired ?: false,
-                    conditions = it.conditions?.toDomain(),
-                    autofill = it.autofill?.toDomain()
+                    conditions = if (it.conditions != null) it.conditions.toDomain() else null,
+                    autofill = if (it.autofill != null) it.autofill.toDomain() else null
                 )
             )
         }
