@@ -18,6 +18,22 @@ fun ConfigsResponse.BooleansResponse.toDomain(): Configs.Preferences {
 }
 
 
+fun ConfigsResponse.CallScopeResponse.TypeResponse.toDomain(): Configs.Nestable.Type {
+    return when (this) {
+        ConfigsResponse.CallScopeResponse.TypeResponse.FOLDER -> Configs.Nestable.Type.FOLDER
+        ConfigsResponse.CallScopeResponse.TypeResponse.LINK -> Configs.Nestable.Type.LINK
+    }
+}
+
+
+fun ConfigsResponse.CallScopeResponse.DetailsResponse.BehaviorResponse.toDomain(): Configs.Nestable.Extra.Behavior {
+    return when (this) {
+        ConfigsResponse.CallScopeResponse.DetailsResponse.BehaviorResponse.REQUEST_LOCATION ->
+            Configs.Nestable.Extra.Behavior.REQUEST_LOCATION
+    }
+}
+
+
 fun ConfigsResponse.toDomain(): Configs {
     val bot = Configs.Bot(
         image = configs?.image,
@@ -38,15 +54,14 @@ fun ConfigsResponse.toDomain(): Configs {
         for (it in callScopes) {
             val parentId = it.parentId ?: ConfigsResponse.CallScopeResponse.NO_PARENT_ID
 
-            val type = when (it.type) {
-                ConfigsResponse.CallScopeResponse.TypeResponse.FOLDER -> Configs.Nestable.Type.FOLDER
-                ConfigsResponse.CallScopeResponse.TypeResponse.LINK -> Configs.Nestable.Type.LINK
-                else -> null
-            }
+            val type = it.type?.toDomain()
 
             val title = it.title.toDomain()
 
-            val extra = Configs.Extra(order = it.details?.order)
+            val extra = Configs.Nestable.Extra(
+                order = it.details?.order,
+                behavior = it.details?.behavior?.toDomain()
+            )
 
             when (it.chatType) {
                 ConfigsResponse.CallScopeResponse.ChatTypeResponse.AUDIO,
@@ -66,7 +81,7 @@ fun ConfigsResponse.toDomain(): Configs {
                             callType = callType,
                             title = title,
                             scope = it.scope,
-                            extra = extra,
+                            extra = extra
                         )
                     )
                 }

@@ -137,8 +137,19 @@ data class ConfigsResponse constructor(
             val formId: Long?,
 
             @SerializedName("external_id")
-            val externalId: Long?
-        )
+            val externalId: Long?,
+
+            @SerializedName("behavior")
+            val behavior: BehaviorResponse?
+        ) {
+
+            @Keep
+            enum class BehaviorResponse {
+                @SerializedName("request_location")
+                REQUEST_LOCATION
+            }
+
+        }
 
     }
 
