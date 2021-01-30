@@ -28,6 +28,10 @@ fun ConfigsResponse.CallScopeResponse.TypeResponse.toDomain(): Configs.Nestable.
 
 fun ConfigsResponse.CallScopeResponse.DetailsResponse.BehaviorResponse.toDomain(): Configs.Nestable.Extra.Behavior {
     return when (this) {
+        ConfigsResponse.CallScopeResponse.DetailsResponse.BehaviorResponse.UNKNOWN ->
+            Configs.Nestable.Extra.Behavior.UNKNOWN
+        ConfigsResponse.CallScopeResponse.DetailsResponse.BehaviorResponse.REGULAR ->
+            Configs.Nestable.Extra.Behavior.REGULAR
         ConfigsResponse.CallScopeResponse.DetailsResponse.BehaviorResponse.REQUEST_LOCATION ->
             Configs.Nestable.Extra.Behavior.REQUEST_LOCATION
     }
@@ -112,7 +116,6 @@ fun ConfigsResponse.toDomain(): Configs {
                     }
                 }
             }
-
         }
     }
 

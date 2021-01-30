@@ -145,6 +145,12 @@ data class ConfigsResponse constructor(
 
             @Keep
             enum class BehaviorResponse {
+                @SerializedName("unknown")
+                UNKNOWN,
+
+                @SerializedName("regular")
+                REGULAR,
+
                 @SerializedName("request_location")
                 REQUEST_LOCATION
             }
