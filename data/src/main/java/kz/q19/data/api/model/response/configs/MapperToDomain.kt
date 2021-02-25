@@ -3,6 +3,7 @@ package kz.q19.data.api.model.response.configs
 import kz.q19.data.api.model.response.i18n.toDomain
 import kz.q19.domain.model.call.CallType
 import kz.q19.domain.model.configs.Configs
+import kz.q19.domain.model.i18n.I18NId
 
 
 fun ConfigsResponse.BooleansResponse.toDomain(): Configs.Preferences {
@@ -91,13 +92,17 @@ fun ConfigsResponse.toDomain(): Configs {
                 }
                 ConfigsResponse.CallScopeResponse.ChatTypeResponse.FORM,
                 ConfigsResponse.CallScopeResponse.ChatTypeResponse.EXTERNAL -> {
-                    if (it.details?.formId != null) {
+                    if (it.details?.form != null) {
                         forms.add(
                             Configs.Form(
                                 id = it.id,
                                 parentId = parentId,
                                 type = type,
-                                formId = it.details.formId,
+                                formId = I18NId(
+                                    kk = it.details.form.kk,
+                                    ru = it.details.form.ru,
+                                    en = it.details.form.en
+                                ),
                                 title = title,
                                 extra = extra
                             )

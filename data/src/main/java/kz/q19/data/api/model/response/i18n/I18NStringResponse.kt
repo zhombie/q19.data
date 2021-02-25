@@ -6,14 +6,14 @@ import com.google.gson.annotations.SerializedName
 @Keep
 data class I18NStringResponse constructor(
     @SerializedName("kk")
-    val kk: String? = null,
+    val kk: String?,
 
     @SerializedName("kz")
-    val kz: String? = null,
+    val kz: String?,
 
     @SerializedName("ru")
-    val ru: String? = null,
+    val ru: String?,
 
     @SerializedName("en")
-    val en: String? = null
+    val en: String?
 )

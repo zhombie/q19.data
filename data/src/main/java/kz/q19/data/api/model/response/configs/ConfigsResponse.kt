@@ -3,6 +3,7 @@ package kz.q19.data.api.model.response.configs
 import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 import kz.q19.data.api.model.response.i18n.I18NStringResponse
+import kz.q19.domain.model.i18n.I18NString
 
 @Keep
 data class ConfigsResponse constructor(
@@ -133,8 +134,12 @@ data class ConfigsResponse constructor(
             @SerializedName("subtitle")
             val subtitle: String?,
 
+            @Deprecated("Use form.[language] value")
             @SerializedName("form_id")
             val formId: Long?,
+
+            @SerializedName("form")
+            val form: FormResponse?,
 
             @SerializedName("external_id")
             val externalId: Long?,
@@ -142,6 +147,18 @@ data class ConfigsResponse constructor(
             @SerializedName("behavior")
             val behavior: BehaviorResponse?
         ) {
+
+            @Keep
+            data class FormResponse constructor(
+                @SerializedName("kk")
+                val kk: Long?,
+
+                @SerializedName("ru")
+                val ru: Long?,
+
+                @SerializedName("en")
+                val en: Long?
+            )
 
             @Keep
             enum class BehaviorResponse {
