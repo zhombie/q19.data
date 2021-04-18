@@ -28,6 +28,7 @@ fun FormResponse.FieldResponse.Type.toDomain(): Form.Field.Type {
         FormResponse.FieldResponse.Type.IMAGE -> Form.Field.Type.IMAGE
         FormResponse.FieldResponse.Type.AUDIO -> Form.Field.Type.AUDIO
         FormResponse.FieldResponse.Type.VIDEO -> Form.Field.Type.VIDEO
+        FormResponse.FieldResponse.Type.DOCUMENT -> Form.Field.Type.DOCUMENT
         FormResponse.FieldResponse.Type.FILE -> Form.Field.Type.FILE
     }
 }
@@ -35,11 +36,13 @@ fun FormResponse.FieldResponse.Type.toDomain(): Form.Field.Type {
 
 fun FormResponse.FieldResponse.Configs.toDomain(): Form.Field.Configs {
     return Form.Field.Configs(
-        isMultipleSelection = isMultipleSelection == true,
-        maxSelectionCount = maxSelectionCount ?: 0,
+        isMultipleSelection = isMultipleSelection,
+        maxSelectionCount = maxSelectionCount,
         key = key,
         regexp = regexp,
-        regexpExplanation = regexpExplanation
+        regexpExplanation = regexpExplanation,
+        inputTextMaxLength = inputTextMaxLength,
+        inputTextMaxLines = inputTextMaxLines
     )
 }
 
@@ -83,6 +86,7 @@ fun FormResponse.FieldResponse.Autofill.toDomain(): Form.Field.Autofill {
             "user.iin" -> Form.Field.Autofill.Qualifier.USER_IIN
             "user.email" -> Form.Field.Autofill.Qualifier.USER_EMAIL
             "user.phone_number" -> Form.Field.Autofill.Qualifier.USER_PHONE_NUMBER
+            "user.geolocation" -> Form.Field.Autofill.Qualifier.USER_GEOLOCATION
             else -> Form.Field.Autofill.Qualifier.UNKNOWN
         }
     )

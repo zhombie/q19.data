@@ -101,6 +101,9 @@ data class FormResponse constructor(
             @SerializedName("video")
             VIDEO("video"),
 
+            @SerializedName("document")
+            DOCUMENT("document"),
+
             @SerializedName("file")
             FILE("file")
         }
@@ -120,7 +123,13 @@ data class FormResponse constructor(
             val regexp: String? = null,
 
             @SerializedName("regexp_explanation")
-            val regexpExplanation: String? = null
+            val regexpExplanation: String? = null,
+
+            @SerializedName("input_text_max_length")
+            val inputTextMaxLength: Int? = null,
+
+            @SerializedName("input_text_max_lines")
+            val inputTextMaxLines: Int? = null
         )
 
         @Keep
