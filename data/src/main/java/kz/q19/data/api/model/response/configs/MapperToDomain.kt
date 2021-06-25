@@ -5,7 +5,6 @@ import kz.q19.domain.model.call.CallType
 import kz.q19.domain.model.configs.Configs
 import kz.q19.domain.model.i18n.I18NId
 
-
 fun ConfigsResponse.BooleansResponse.toDomain(): Configs.Preferences {
     return Configs.Preferences(
         isChatBotEnabled = isChatBotEnabled == true,

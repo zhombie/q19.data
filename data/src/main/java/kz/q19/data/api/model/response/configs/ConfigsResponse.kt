@@ -3,7 +3,6 @@ package kz.q19.data.api.model.response.configs
 import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 import kz.q19.data.api.model.response.i18n.I18NStringResponse
-import kz.q19.domain.model.i18n.I18NString
 
 @Keep
 data class ConfigsResponse constructor(
