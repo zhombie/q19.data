@@ -119,6 +119,7 @@ fun ConfigsResponse.toDomain(): Configs {
                         )
                     }
                 }
+                else -> {}
             }
         }
     }

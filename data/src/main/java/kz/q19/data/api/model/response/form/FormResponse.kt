@@ -2,7 +2,6 @@ package kz.q19.data.api.model.response.form
 
 import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
-import kz.q19.domain.model.file.Extension
 
 @Keep
 data class FormResponse constructor(
@@ -135,7 +134,7 @@ data class FormResponse constructor(
         @Keep
         data class Info constructor(
             @SerializedName("extension")
-            val extension: Extension? = null,
+            val extension: ExtensionResponse? = null,
 
             @SerializedName("width")
             val width: Int? = null,

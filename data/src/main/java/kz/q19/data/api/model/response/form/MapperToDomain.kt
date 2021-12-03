@@ -1,13 +1,18 @@
 package kz.q19.data.api.model.response.form
 
+import kz.garage.file.extension.Extension
 import kz.q19.domain.model.form.Form
 import kz.q19.domain.model.keyboard.Keyboard
 import kz.q19.domain.model.keyboard.button.CallbackButton
 import kz.q19.domain.model.keyboard.button.TextButton
 
+fun ExtensionResponse.toDomain(): Extension? =
+    Extension::class.java.enumConstants?.find { it.value == value }
+
+
 fun FormResponse.FieldResponse.Info.toDomain(): Form.Field.Info {
     return Form.Field.Info(
-        extension = extension,
+        extension = extension?.toDomain(),
         width =  width,
         height = height,
         duration = duration,
