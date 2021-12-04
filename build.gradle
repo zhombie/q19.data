@@ -61,7 +61,6 @@ subprojects { project ->
     apply plugin: 'com.android.library'
     apply plugin: 'maven-publish'
     apply plugin: 'kotlin-android'
-    apply plugin: 'kotlin-parcelize'
 
     android {
         compileSdkVersion 31

@@ -1,4 +1,4 @@
-package kz.q19.data
+package kz.q19.sample.data
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
