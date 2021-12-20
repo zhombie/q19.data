@@ -1,3 +1,3 @@
+rootProject.name = 'q19.data'
 include ':data'
 include ':sample'
-rootProject.name = 'q19.data'
