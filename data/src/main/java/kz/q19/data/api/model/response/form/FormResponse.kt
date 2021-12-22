@@ -2,6 +2,7 @@ package kz.q19.data.api.model.response.form
 
 import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
+import kz.q19.data.api.model.response.form.field.info.extension.ExtensionResponse
 
 @Keep
 data class FormResponse constructor(

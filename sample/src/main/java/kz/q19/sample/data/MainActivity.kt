@@ -5,9 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import kz.q19.data.api.model.response.configs.ConfigsResponse
 import kz.q19.data.api.model.response.configs.toDomain
 import kz.q19.data.api.model.response.form.FormResponse
-import kz.q19.data.api.model.response.form.toDomain
+import kz.q19.data.api.model.response.form.toForm
 import kz.q19.data.api.model.response.geo.LocationResponse
-import kz.q19.data.api.model.response.geo.toDomain
+import kz.q19.data.api.model.response.geo.toLocation
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,10 +26,10 @@ class MainActivity : AppCompatActivity() {
             fields = emptyList(),
             configs = null
         )
-        print(formResponse.toDomain())
+        print(formResponse.toForm())
 
         val locationResponse = LocationResponse(latitude = 0.0, longitude = 0.0)
-        print(locationResponse.toDomain())
+        print(locationResponse.toLocation())
     }
 
 }

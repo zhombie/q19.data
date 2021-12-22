@@ -2,8 +2,8 @@ package kz.q19.data.api.model.response.geo
 
 import kz.q19.domain.model.geo.Location
 
-fun LocationResponse.toDomain(): Location {
-    return Location(
+fun LocationResponse.toLocation(): Location =
+    Location(
         provider = provider,
         latitude = latitude,
         longitude = longitude,
@@ -16,4 +16,3 @@ fun LocationResponse.toDomain(): Location {
         elapsedRealtimeNanos = elapsedRealtimeNanos,
         elapsedRealtimeUncertaintyNanos = elapsedRealtimeUncertaintyNanos
     )
-}

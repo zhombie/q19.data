@@ -1,4 +1,4 @@
-package kz.q19.data.api.model.response.form
+package kz.q19.data.api.model.response.form.field.info.extension
 
 enum class ExtensionResponse constructor(val value: String) {
     JPG("jpg"),

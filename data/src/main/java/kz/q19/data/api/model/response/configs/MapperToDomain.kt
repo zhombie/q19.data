@@ -1,42 +1,12 @@
 package kz.q19.data.api.model.response.configs
 
-import kz.q19.data.api.model.response.i18n.toDomain
-import kz.q19.domain.model.call.CallType
+import kz.q19.data.api.model.response.configs.booleans.toPreferences
+import kz.q19.data.api.model.response.configs.call.scope.details.behavior.toNestableBehavior
+import kz.q19.data.api.model.response.configs.call.scope.type.toNestableType
+import kz.q19.data.api.model.response.i18n.toI18NString
+import kz.q19.domain.model.call.type.CallType
 import kz.q19.domain.model.configs.Configs
 import kz.q19.domain.model.i18n.I18NId
-
-fun ConfigsResponse.BooleansResponse.toDomain(): Configs.Preferences {
-    return Configs.Preferences(
-        isChatBotEnabled = isChatBotEnabled == true,
-        isPhonesListShown = isPhonesListShown == true,
-        isContactSectionsShown = isContactSectionsShown == true,
-        isAudioCallEnabled = isAudioCallEnabled == true,
-        isVideoCallEnabled = isVideoCallEnabled == true,
-        isServicesEnabled = isServicesEnabled == true,
-        isCallAgentsScoped = isOperatorsScoped == true
-    )
-}
-
-
-fun ConfigsResponse.CallScopeResponse.TypeResponse.toDomain(): Configs.Nestable.Type {
-    return when (this) {
-        ConfigsResponse.CallScopeResponse.TypeResponse.FOLDER -> Configs.Nestable.Type.FOLDER
-        ConfigsResponse.CallScopeResponse.TypeResponse.LINK -> Configs.Nestable.Type.LINK
-    }
-}
-
-
-fun ConfigsResponse.CallScopeResponse.DetailsResponse.BehaviorResponse.toDomain(): Configs.Nestable.Extra.Behavior {
-    return when (this) {
-        ConfigsResponse.CallScopeResponse.DetailsResponse.BehaviorResponse.UNKNOWN ->
-            Configs.Nestable.Extra.Behavior.UNKNOWN
-        ConfigsResponse.CallScopeResponse.DetailsResponse.BehaviorResponse.REGULAR ->
-            Configs.Nestable.Extra.Behavior.REGULAR
-        ConfigsResponse.CallScopeResponse.DetailsResponse.BehaviorResponse.REQUEST_LOCATION ->
-            Configs.Nestable.Extra.Behavior.REQUEST_LOCATION
-    }
-}
-
 
 fun ConfigsResponse.toDomain(): Configs {
     val bot = Configs.Bot(
@@ -48,7 +18,7 @@ fun ConfigsResponse.toDomain(): Configs {
         defaultName = configs?.defaultOperator,
     )
 
-    val preferences = booleans?.toDomain() ?: Configs.Preferences()
+    val preferences = booleans?.toPreferences() ?: Configs.Preferences()
 
     val calls = mutableListOf<Configs.Call>()
     val services = mutableListOf<Configs.Service>()
@@ -58,13 +28,13 @@ fun ConfigsResponse.toDomain(): Configs {
         for (it in callScopes) {
             val parentId = it.parentId ?: ConfigsResponse.CallScopeResponse.NO_PARENT_ID
 
-            val type = it.type?.toDomain()
+            val type = it.type?.toNestableType()
 
-            val title = it.title.toDomain()
+            val title = it.title.toI18NString()
 
             val extra = Configs.Nestable.Extra(
                 order = it.details?.order,
-                behavior = it.details?.behavior?.toDomain()
+                behavior = it.details?.behavior?.toNestableBehavior()
             )
 
             when (it.chatType) {

@@ -1,4 +1,4 @@
-package kz.q19.data.api.model.request
+package kz.q19.data.api.model.request.upload
 
 import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
