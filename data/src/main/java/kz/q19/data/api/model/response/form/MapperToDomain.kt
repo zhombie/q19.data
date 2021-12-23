@@ -6,6 +6,7 @@ import kz.q19.data.api.model.response.form.field.conditions.toFormFieldCondition
 import kz.q19.data.api.model.response.form.field.configs.toFormFieldConfigs
 import kz.q19.data.api.model.response.form.field.info.toFormFieldInfo
 import kz.q19.data.api.model.response.form.field.keyboard.toKeyboard
+import kz.q19.data.api.model.response.form.field.option.toOption
 import kz.q19.data.api.model.response.form.field.type.toFormFieldType
 import kz.q19.domain.model.form.Form
 
@@ -39,6 +40,11 @@ fun FormResponse.toForm(): Form {
                     keyboard = if (it.keyboard != null) {
                         it.keyboard.toKeyboard()
                     } else null,
+                    options = if (it.options.isNullOrEmpty()) {
+                        null
+                    } else {
+                        it.options.map { it.toOption() }
+                    },
                     isRequired = it.isRequired ?: false,
                     conditions = if (it.conditions != null) {
                         it.conditions.toFormFieldConditions()
@@ -54,7 +60,7 @@ fun FormResponse.toForm(): Form {
     return Form(
         id = id,
         title = title ?: "",
-        prompt = null,
+        prompt = prompt,
         isFlexible = isFlexibleForm(),
         fields = fields,
         configs = configs?.toFormConfigs()

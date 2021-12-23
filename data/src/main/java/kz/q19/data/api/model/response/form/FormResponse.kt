@@ -45,7 +45,7 @@ data class FormResponse constructor(
         val prompt: String?,
 
         @SerializedName("type")
-        val type: Type?,
+        val type: TypeResponse?,
 
         @SerializedName("default")
         val default: String? = null,
@@ -54,10 +54,10 @@ data class FormResponse constructor(
         val formId: Long,
 
         @SerializedName("info")
-        val info: Info? = null,
+        val info: InfoResponse? = null,
 
         @SerializedName("configs")
-        val configs: Configs? = null,
+        val configs: ConfigsResponse? = null,
 
         @SerializedName("level")
         val level: Int = 0,
@@ -66,20 +66,23 @@ data class FormResponse constructor(
         val value: String? = null,
 
         @SerializedName("keyboard")
-        val keyboard: Keyboard? = null,
+        val keyboard: KeyboardResponse? = null,
+
+        @SerializedName("options")
+        val options: List<OptionResponse>? = null,
 
         @SerializedName("required")
         val isRequired: Boolean? = null,
 
         @SerializedName("conditions")
-        val conditions: Conditions? = null,
+        val conditions: ConditionsResponse? = null,
 
         @SerializedName("autofill")
-        val autofill: Autofill? = null
+        val autofill: AutofillResponse? = null
     ) {
 
         @Keep
-        enum class Type constructor(val value: String) {
+        enum class TypeResponse constructor(val value: String) {
             @SerializedName("text")
             TEXT("text"),
 
@@ -109,7 +112,7 @@ data class FormResponse constructor(
         }
 
         @Keep
-        data class Configs constructor(
+        data class ConfigsResponse constructor(
             @SerializedName("multiple_selection")
             val isMultipleSelection: Boolean? = null,
 
@@ -133,7 +136,7 @@ data class FormResponse constructor(
         )
 
         @Keep
-        data class Info constructor(
+        data class InfoResponse constructor(
             @SerializedName("extension")
             val extension: ExtensionResponse? = null,
 
@@ -160,16 +163,16 @@ data class FormResponse constructor(
         )
 
         @Keep
-        data class Keyboard constructor(
+        data class KeyboardResponse constructor(
             @SerializedName("inline")
             val inline: Boolean?,
 
             @SerializedName("buttons")
-            val buttons: List<List<Button>>?
+            val buttons: List<List<ButtonResponse>>?
         ) {
 
             @Keep
-            data class Button constructor(
+            data class ButtonResponse constructor(
                 @SerializedName("text")
                 val text: String,
 
@@ -180,13 +183,31 @@ data class FormResponse constructor(
         }
 
         @Keep
-        data class Conditions constructor(
+        data class OptionResponse constructor(
+            @SerializedName("id")
+            val id: Long,
+
+            @SerializedName("title")
+            val title: String,
+
+            @SerializedName("parent_id")
+            val parentId: Long? = null,
+
+            @SerializedName("key")
+            val key: String,
+
+            @SerializedName("value")
+            val value: String? = null
+        )
+
+        @Keep
+        data class ConditionsResponse constructor(
             @SerializedName("keyboard")
-            val keyboard: List<Condition>?,
+            val keyboard: List<ConditionResponse>?,
         ) {
 
             @Keep
-            data class Condition constructor(
+            data class ConditionResponse constructor(
                 @SerializedName("payload")
                 val payload: String? = null,
 
@@ -203,7 +224,7 @@ data class FormResponse constructor(
         }
 
         @Keep
-        data class Autofill constructor(
+        data class AutofillResponse constructor(
             @SerializedName("qualifier")
             val qualifier: String?
         )

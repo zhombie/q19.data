@@ -3,8 +3,8 @@ package kz.q19.data.api.model.response.form.field.autofill
 import kz.q19.data.api.model.response.form.FormResponse
 import kz.q19.domain.model.form.Form
 
-fun FormResponse.FieldResponse.Autofill.toFormFieldAutofill(): Form.Field.Autofill {
-    return Form.Field.Autofill(
+fun FormResponse.FieldResponse.AutofillResponse.toFormFieldAutofill(): Form.Field.Autofill =
+    Form.Field.Autofill(
         qualifier = when (qualifier) {
             "user.first_name" -> Form.Field.Autofill.Qualifier.USER_FIRST_NAME
             "user.last_name" -> Form.Field.Autofill.Qualifier.USER_LAST_NAME
@@ -17,4 +17,3 @@ fun FormResponse.FieldResponse.Autofill.toFormFieldAutofill(): Form.Field.Autofi
             else -> Form.Field.Autofill.Qualifier.UNKNOWN
         }
     )
-}

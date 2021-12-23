@@ -5,7 +5,7 @@ import kz.q19.domain.model.keyboard.Keyboard
 import kz.q19.domain.model.keyboard.button.CallbackButton
 import kz.q19.domain.model.keyboard.button.TextButton
 
-fun FormResponse.FieldResponse.Keyboard.toKeyboard(): Keyboard {
+fun FormResponse.FieldResponse.KeyboardResponse.toKeyboard(): Keyboard {
     return Keyboard(
         inline = inline,
         buttons = buttons?.map { buttons ->
