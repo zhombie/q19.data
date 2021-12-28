@@ -2,7 +2,7 @@ package kz.q19.data.api.model.response.webrtc.ice_server
 
 import kz.q19.domain.model.webrtc.IceServer
 
-fun IceServerResponse.toDomain(): IceServer =
+fun IceServerResponse.toIceServer(): IceServer =
     IceServer(
         url = url ?: "",
         urls = urls ?: "",
@@ -11,5 +11,5 @@ fun IceServerResponse.toDomain(): IceServer =
     )
 
 
-fun IceServersResponse.toDomain(): List<IceServer> =
-    iceServers?.map { it.toDomain() } ?: emptyList()
+fun IceServersResponse.toIceServers(): List<IceServer>? =
+    iceServers?.map { it.toIceServer() }

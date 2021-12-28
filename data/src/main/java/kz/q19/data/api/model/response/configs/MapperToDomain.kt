@@ -8,7 +8,7 @@ import kz.q19.domain.model.call.type.CallType
 import kz.q19.domain.model.configs.Configs
 import kz.q19.domain.model.i18n.I18NId
 
-fun ConfigsResponse.toDomain(): Configs {
+fun ConfigsResponse.toConfigs(): Configs {
     val bot = Configs.Bot(
         image = configs?.image,
         title = configs?.title
