@@ -116,7 +116,10 @@ data class ConfigsResponse constructor(
             EXTERNAL("external"),
 
             @SerializedName("form")
-            FORM("form")
+            FORM("form"),
+
+            @SerializedName("website")
+            WEBSITE("website")
         }
 
         @Keep
@@ -144,7 +147,10 @@ data class ConfigsResponse constructor(
             val externalId: Long?,
 
             @SerializedName("behavior")
-            val behavior: BehaviorResponse?
+            val behavior: BehaviorResponse?,
+
+            @SerializedName("url")
+            val url: String?
         ) {
 
             @Keep

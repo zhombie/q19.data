@@ -23,6 +23,7 @@ fun ConfigsResponse.toConfigs(): Configs {
     val calls = mutableListOf<Configs.Call>()
     val services = mutableListOf<Configs.Service>()
     val forms = mutableListOf<Configs.Form>()
+    val websites = mutableListOf<Configs.Website>()
 
     if (!callScopes.isNullOrEmpty()) {
         for (it in callScopes) {
@@ -89,6 +90,20 @@ fun ConfigsResponse.toConfigs(): Configs {
                         )
                     }
                 }
+                ConfigsResponse.CallScopeResponse.ChatTypeResponse.WEBSITE -> {
+                    if (it.details?.url != null) {
+                        websites.add(
+                            Configs.Website(
+                                id = it.id,
+                                parentId = parentId,
+                                type = type,
+                                url = it.details.url,
+                                title = title,
+                                extra = extra
+                            )
+                        )
+                    }
+                }
                 else -> {}
             }
         }
@@ -100,6 +115,7 @@ fun ConfigsResponse.toConfigs(): Configs {
         preferences = preferences,
         calls = calls,
         forms = forms,
-        services = services
+        services = services,
+        websites = websites
     )
 }
