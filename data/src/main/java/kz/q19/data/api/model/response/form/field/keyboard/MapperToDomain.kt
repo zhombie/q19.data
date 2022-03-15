@@ -5,10 +5,11 @@ import kz.q19.domain.model.keyboard.Keyboard
 import kz.q19.domain.model.keyboard.button.CallbackButton
 import kz.q19.domain.model.keyboard.button.TextButton
 
-fun FormResponse.FieldResponse.KeyboardResponse.toKeyboard(): Keyboard {
+fun FormResponse.FieldResponse.KeyboardResponse.toKeyboard(): Keyboard? {
+    if (buttons.isNullOrEmpty()) return null
     return Keyboard(
         inline = inline,
-        buttons = buttons?.map { buttons ->
+        buttons = buttons.map { buttons ->
             buttons.map { button ->
                 if (!button.payload.isNullOrBlank()) {
                     CallbackButton(button.text, button.payload)

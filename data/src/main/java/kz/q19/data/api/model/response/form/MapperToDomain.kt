@@ -30,28 +30,23 @@ fun FormResponse.toForm(): Form {
                     prompt = it.prompt,
                     type = type,
                     defaultValue = it.default,
-                    info = if (it.info != null) {
-                        it.info.toFormFieldInfo()
-                    } else null,
-                    configs = if (it.configs != null) {
-                        it.configs.toFormFieldConfigs()
-                    } else null,
+                    info = if (it.info == null) null
+                    else it.info.toFormFieldInfo(),
+                    configs = if (it.configs == null) null
+                    else it.configs.toFormFieldConfigs(),
                     level = it.level,
-                    keyboard = if (it.keyboard != null) {
-                        it.keyboard.toKeyboard()
-                    } else null,
+                    keyboard = if (it.keyboard == null) null
+                    else it.keyboard.toKeyboard(),
                     options = if (it.options.isNullOrEmpty()) {
                         null
                     } else {
                         it.options.map { it.toOption() }
                     },
                     isRequired = it.isRequired ?: false,
-                    conditions = if (it.conditions != null) {
-                        it.conditions.toFormFieldConditions()
-                    } else null,
-                    autofill = if (it.autofill != null) {
-                        it.autofill.toFormFieldAutofill()
-                    } else null
+                    conditions = if (it.conditions == null) null
+                    else it.conditions.toFormFieldConditions(),
+                    autofill = if (it.autofill == null) null
+                    else it.autofill.toFormFieldAutofill()
                 )
             )
         }
