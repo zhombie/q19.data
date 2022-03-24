@@ -1,15 +1,16 @@
 package kz.q19.data.api.model.response.form.field.keyboard
 
+import kz.garage.chat.model.reply_markup.InlineReplyMarkup
+import kz.garage.chat.model.reply_markup.Keyboard
+import kz.garage.chat.model.reply_markup.ReplyMarkup
+import kz.garage.chat.model.reply_markup.button.CallbackButton
+import kz.garage.chat.model.reply_markup.button.TextButton
 import kz.q19.data.api.model.response.form.FormResponse
-import kz.q19.domain.model.keyboard.Keyboard
-import kz.q19.domain.model.keyboard.button.CallbackButton
-import kz.q19.domain.model.keyboard.button.TextButton
 
-fun FormResponse.FieldResponse.KeyboardResponse.toKeyboard(): Keyboard? {
+fun FormResponse.FieldResponse.KeyboardResponse.toReplyMarkup(): ReplyMarkup? {
     if (buttons.isNullOrEmpty()) return null
-    return Keyboard(
-        inline = inline,
-        buttons = buttons.map { buttons ->
+    val rows = buttons.map { buttons ->
+        ReplyMarkup.Row(
             buttons.map { button ->
                 if (!button.payload.isNullOrBlank()) {
                     CallbackButton(button.text, button.payload)
@@ -17,6 +18,11 @@ fun FormResponse.FieldResponse.KeyboardResponse.toKeyboard(): Keyboard? {
                     TextButton(button.text)
                 }
             }
-        }
-    )
+        )
+    }
+    return if (inline == null || inline) {
+        InlineReplyMarkup(rows)
+    } else {
+        Keyboard(rows)
+    }
 }

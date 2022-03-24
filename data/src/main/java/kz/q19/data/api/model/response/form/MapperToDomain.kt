@@ -5,7 +5,7 @@ import kz.q19.data.api.model.response.form.field.autofill.toFormFieldAutofill
 import kz.q19.data.api.model.response.form.field.conditions.toFormFieldConditions
 import kz.q19.data.api.model.response.form.field.configs.toFormFieldConfigs
 import kz.q19.data.api.model.response.form.field.info.toFormFieldInfo
-import kz.q19.data.api.model.response.form.field.keyboard.toKeyboard
+import kz.q19.data.api.model.response.form.field.keyboard.toReplyMarkup
 import kz.q19.data.api.model.response.form.field.option.toOption
 import kz.q19.data.api.model.response.form.field.type.toFormFieldType
 import kz.q19.domain.model.form.Form
@@ -35,8 +35,8 @@ fun FormResponse.toForm(): Form {
                     configs = if (it.configs == null) null
                     else it.configs.toFormFieldConfigs(),
                     level = it.level,
-                    keyboard = if (it.keyboard == null) null
-                    else it.keyboard.toKeyboard(),
+                    replyMarkup = if (it.keyboard == null) null
+                    else it.keyboard.toReplyMarkup(),
                     options = if (it.options.isNullOrEmpty()) {
                         null
                     } else {
