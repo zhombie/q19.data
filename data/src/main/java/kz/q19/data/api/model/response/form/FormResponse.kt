@@ -1,10 +1,8 @@
 package kz.q19.data.api.model.response.form
 
-import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 import kz.q19.data.api.model.response.form.field.info.extension.ExtensionResponse
 
-@Keep
 data class FormResponse constructor(
     @SerializedName("id")
     val id: Long,
@@ -30,7 +28,6 @@ data class FormResponse constructor(
         const val IS_FLEXIBLE_FORM = 1
     }
 
-    @Keep
     data class FieldResponse constructor(
         @SerializedName("id")
         val id: Long,
@@ -81,7 +78,6 @@ data class FormResponse constructor(
         val autofill: AutofillResponse? = null
     ) {
 
-        @Keep
         enum class TypeResponse constructor(val value: String) {
             @SerializedName("text")
             TEXT("text"),
@@ -111,7 +107,6 @@ data class FormResponse constructor(
             FILE("file")
         }
 
-        @Keep
         data class ConfigsResponse constructor(
             @SerializedName("multiple_selection")
             val isMultipleSelection: Boolean? = null,
@@ -135,7 +130,6 @@ data class FormResponse constructor(
             val inputTextMaxLines: Int? = null
         )
 
-        @Keep
         data class InfoResponse constructor(
             @SerializedName("extension")
             val extension: ExtensionResponse? = null,
@@ -162,7 +156,6 @@ data class FormResponse constructor(
             val size: Long? = null
         )
 
-        @Keep
         data class KeyboardResponse constructor(
             @SerializedName("inline")
             val inline: Boolean?,
@@ -171,7 +164,6 @@ data class FormResponse constructor(
             val buttons: List<List<ButtonResponse>>?
         ) {
 
-            @Keep
             data class ButtonResponse constructor(
                 @SerializedName("text")
                 val text: String,
@@ -182,7 +174,6 @@ data class FormResponse constructor(
 
         }
 
-        @Keep
         data class OptionResponse constructor(
             @SerializedName("id")
             val id: Long,
@@ -200,13 +191,11 @@ data class FormResponse constructor(
             val value: String? = null
         )
 
-        @Keep
         data class ConditionsResponse constructor(
             @SerializedName("keyboard")
             val keyboard: List<ConditionResponse>?,
         ) {
 
-            @Keep
             data class ConditionResponse constructor(
                 @SerializedName("payload")
                 val payload: String? = null,
@@ -223,7 +212,6 @@ data class FormResponse constructor(
 
         }
 
-        @Keep
         data class AutofillResponse constructor(
             @SerializedName("qualifier")
             val qualifier: String?
@@ -231,7 +219,6 @@ data class FormResponse constructor(
 
     }
 
-    @Keep
     data class ConfigsResponse constructor(
         @SerializedName("assignee")
         val assignee: List<Long>?,

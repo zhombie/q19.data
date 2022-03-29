@@ -1,10 +1,8 @@
 package kz.q19.data.api.model.response.configs
 
-import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 import kz.q19.data.api.model.response.i18n.I18NStringResponse
 
-@Keep
 data class ConfigsResponse constructor(
     @SerializedName("configs")
     val configs: InnerConfigsResponse?,
@@ -16,7 +14,6 @@ data class ConfigsResponse constructor(
     val callScopes: List<CallScopeResponse>?
 ) {
 
-    @Keep
     data class InnerConfigsResponse constructor(
         @SerializedName("title")
         val title: String?,
@@ -31,7 +28,6 @@ data class ConfigsResponse constructor(
         val type: Int?
     )
 
-    @Keep
     data class BooleansResponse constructor(
         @SerializedName("chatbot_enabled")
         val isChatBotEnabled: Boolean? = false,
@@ -55,7 +51,6 @@ data class ConfigsResponse constructor(
         val isOperatorsScoped: Boolean? = false
     )
 
-    @Keep
     data class CallScopeResponse constructor(
         @SerializedName("id")
         val id: Long,
@@ -86,7 +81,6 @@ data class ConfigsResponse constructor(
             const val NO_PARENT_ID = 0L
         }
 
-        @Keep
         enum class TypeResponse constructor(val value: String) {
             @SerializedName("folder")
             FOLDER("folder"),
@@ -95,7 +89,6 @@ data class ConfigsResponse constructor(
             LINK("link")
         }
 
-        @Keep
         enum class ActionResponse constructor(val value: String) {
             @SerializedName("audio_call")
             AUDIO_CALL("audio_call"),
@@ -104,7 +97,6 @@ data class ConfigsResponse constructor(
             VIDEO_CALL("video_call")
         }
 
-        @Keep
         enum class ChatTypeResponse constructor(val value: String) {
             @SerializedName("audio")
             AUDIO("audio"),
@@ -122,7 +114,6 @@ data class ConfigsResponse constructor(
             WEBSITE("website")
         }
 
-        @Keep
         data class DetailsResponse constructor(
             @SerializedName("order")
             val order: Int?,
@@ -153,7 +144,6 @@ data class ConfigsResponse constructor(
             val url: String?
         ) {
 
-            @Keep
             data class FormResponse constructor(
                 @SerializedName("kk")
                 val kk: Long?,
@@ -165,7 +155,6 @@ data class ConfigsResponse constructor(
                 val en: Long?
             )
 
-            @Keep
             enum class BehaviorResponse {
                 @SerializedName("unknown")
                 UNKNOWN,

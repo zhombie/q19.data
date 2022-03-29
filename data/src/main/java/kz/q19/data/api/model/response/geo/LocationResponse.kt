@@ -1,9 +1,7 @@
 package kz.q19.data.api.model.response.geo
 
-import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
-@Keep
 data class LocationResponse constructor(
     @SerializedName("provider")
     val provider: String? = null,

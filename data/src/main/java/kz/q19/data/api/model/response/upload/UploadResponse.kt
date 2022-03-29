@@ -1,9 +1,7 @@
 package kz.q19.data.api.model.response.upload
 
-import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
-@Keep
 data class UploadResponse constructor(
     @SerializedName("hash")
     val hash: String,
